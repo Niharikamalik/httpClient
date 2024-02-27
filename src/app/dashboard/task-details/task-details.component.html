@@ -1,0 +1,29 @@
+
+<div>
+  <mat-icon [mat-dialog-close]="true">exit_to_app</mat-icon>
+  <mat-dialog-content class="content" mat-dialog-actions>
+        <h2 mat-dialog-title>{{data.title}}</h2>
+        <mat-divider></mat-divider>
+          <div>
+              <strong>Description</strong>
+              {{data.desc}}
+          </div >
+          <div>
+            <strong>Assigned To: </strong>
+            {{data.assign}}
+          </div>
+          <div>
+            <strong>Created At: </strong>
+            {{data.create}}
+          </div>
+          <div>
+            <div>
+              <strong>Priority:</strong>{{data.Priority}}
+            </div>
+            <div>
+              <strong>Status: </strong>{{data.Status}}
+            </div>
+          </div>
+      </mat-dialog-content>
+</div>
+

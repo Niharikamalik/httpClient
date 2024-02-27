@@ -1,0 +1,70 @@
+<div class="dashboard-container">
+  <div style="display: flex;">
+    <div style="width: 50%">
+      <h2>Dashboard</h2>
+      <app-create-task
+      class="app-create-task"
+              *ngIf="showCreateTaskForm"
+              (CloseForm)="CloseCreateTaskForm()"
+              (EmitTask)="createOrEditTask($event)"
+              [isEditMode]="EditMode"
+              [selectedTask]="selectedTask"
+      ></app-create-task>
+        </div>
+        <div style="width: 50%; text-align: right;">
+          <button
+            class="create-task-btn"
+            (click)="OpenCreateTaskForm()"
+            mat-raised-button color = "primary">Create Task
+          </button>
+            <button
+            class="create-task-btn"
+            (click)="fetchAllTask()"
+            mat-raised-button color="primary">Fetch Tasks</button>
+            <button
+            class="create-task-btn"
+            (click)="deleteAllTask()"
+            mat-raised-button color="warn">Clear Tasks</button>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="error-message" *ngIf="ErrorMessage" > {{ErrorMessage}}</div>
+    <div class="dashboard-item-container">
+        <mat-spinner  *ngIf="isLoading" color="warn" ></mat-spinner>
+      <ng-container *ngIf="!isLoading">
+        <div *ngIf="this.allTask.length === 0">
+          <div *ngIf="ErrorMessage === null">
+            <h1> No Task is Assigned </h1>
+          </div>
+        </div>
+
+              <div class="task-item" *ngFor="let task of allTask">
+                <mat-card>
+
+                    <mat-card-header>
+                      <mat-card-title>{{task.title}}</mat-card-title>
+                    </mat-card-header>
+
+                    <mat-card-content>
+                    <mat-divider></mat-divider>
+                    <p><b>Assigned to : </b>{{task.assign}}</p>
+                    <p><b>Priority : </b>{{task.Priority}}</p>
+                    <p><b>Status : </b>{{task.Status}}</p>
+                    <mat-divider></mat-divider>
+                    <mat-card-footer>
+                      <mat-icon (click)="deleteTask(task.id)" color="warn">delete</mat-icon>
+                      <mat-icon  color="primary" (click)="OnEditTask(task.id)">edit</mat-icon>
+                      <mat-icon color="primary" (click)="onShowDetail(task.id)">details</mat-icon>
+                    </mat-card-footer>
+                  </mat-card-content>
+                </mat-card>
+              </div>
+      </ng-container>
+
+    </div>
+</div>
+
+
+

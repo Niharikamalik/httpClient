@@ -1,0 +1,58 @@
+<div class="login-form">
+    <mat-card>
+      <div class="error-message" *ngIf="errMessage" > {{errMessage}}</div>
+        <mat-card-header>
+            <mat-card-title>{{isLoginMode?'Login Here' : 'SignUp'}}</mat-card-title>
+
+        </mat-card-header>
+        <mat-spinner *ngIf="isloading" ></mat-spinner>
+        <form
+            #authform="ngForm"
+            (ngSubmit)="OnformSubmit(authform)"
+            *ngIf="!isloading"
+        >
+            <mat-card-content>
+                <mat-form-field>
+                    <mat-label>Email</mat-label>
+                    <input
+                        type="email"
+                        name="email"
+                        ngModel
+                        matInput
+                        required
+                    >
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Password</mat-label>
+                    <input
+                        type="password"
+                        minlength="5"
+                        name="password"
+                        ngModel
+                        matInput
+                        required
+                    >
+                </mat-form-field>
+            </mat-card-content>
+            <mat-card-footer>
+                <button
+                    mat-raised-button
+                    color="primary"
+                    [disabled]="authform.invalid"
+                >
+                    Submit
+                </button>
+                <p>
+                    {{isLoginMode? 'Do not have account ':'Already have account'}}
+                    <button
+                        mat-button
+                        color="primary"
+                        (click)="onSignupMode()"
+                    >
+                        {{isLoginMode ? 'Resister here':'Login Here'}}
+                    </button>
+                </p>
+            </mat-card-footer>
+        </form>
+    </mat-card>
+</div>

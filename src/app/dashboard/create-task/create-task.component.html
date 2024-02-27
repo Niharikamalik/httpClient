@@ -1,0 +1,105 @@
+<div class="overlay">
+    <div class="popup">
+        <mat-card>
+            <a
+                class="close"
+                href="#"
+                (click)="OnCloseForm()"
+            >
+                <mat-icon>close</mat-icon>
+            </a>
+            <h2 mat-card-header>
+                {{isEditMode? 'Update Task':"Create a new Task"}}
+            </h2>
+            <div class="content">
+                <section class="container">
+                    <form
+                        action="#"
+                        class="form"
+                        #taskForm="ngForm"
+                        (ngSubmit)="OnformSubmitted(taskForm)"
+                    >
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Title</mat-label>
+                            <input
+                                type="text"
+                                required
+                                name="title"
+                                matInput
+                                ngModel
+                            >
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Description</mat-label>
+                            <textarea
+                                name="desc"
+                                ngModel
+                                matInput
+                                required
+                            ></textarea>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Assigned To</mat-label>
+                            <input
+                                type="text"
+                                name="assign"
+                                value=""
+                                required
+                                matInput
+                                ngModel
+                            >
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Created At</mat-label>
+                            <input
+                                type="date"
+                                name="Create"
+                                ngModel
+                                matInput
+                                [matDatepicker]="picker"
+                                required
+                            >
+                            <mat-hint>MM/DD/YYYY</mat-hint>
+                            <mat-datepicker-toggle
+                                matIconSuffix
+                                [for]="picker"
+                            ></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Priority</mat-label>
+                                <mat-select
+                                    name="Priority"
+                                    ngModel
+                                > @for (item of priority; track item) {
+                                  <mat-option [value]="item.value">{{item.viewValue}}</mat-option>
+                                }
+                                </mat-select>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Status</mat-label>
+                                <mat-select
+                                    name="Status"
+                                    ngModel
+                                >
+                                @for (item of status; track item){
+                                  <mat-option [value]="item.value">{{item.viewValue}}</mat-option>
+                                }
+                                </mat-select>
+
+                        </mat-form-field>
+                        <div>
+                          <button
+                              mat-raised-button
+                              color="warn"
+                              type="submit"
+                          >
+                              {{isEditMode? 'Update Task':'Create Task'}}
+                          </button>
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </mat-card>
+    </div>
+</div>

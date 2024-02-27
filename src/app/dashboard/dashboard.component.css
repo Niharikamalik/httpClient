@@ -1,0 +1,51 @@
+.dashboard-container{
+  margin: 20px;
+  /* background-color: rgba(247, 161, 161, 0.5); */
+}
+.task-item
+{
+  margin: 10px;
+}
+.dashboard-item-container
+{
+  display: flex;
+  flex-wrap: wrap;
+  background-color: rgba(167, 156, 206, 0.308);
+  padding: 20px;
+  justify-content: start;
+}
+.app-create-task
+{
+ z-index: 1;
+ margin: 0;
+ padding: 0;
+}
+
+button{
+  margin: 10px;
+}
+
+mat-spinner{
+  margin: 0% 40%;
+}
+
+.error-message{
+  background-color: rgba(235, 90, 90, 0.363);
+  border: 1px solid rgb(230, 86, 86) ;
+  border-radius: 5px;
+  padding: 20px;
+  color: brown;
+}
+mat-card-footer
+{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: end;
+  padding: 5px;
+}
+mat-icon{
+  padding: 8px;
+}
+mat-divider{
+  margin :  10px 0 8px 0px;
+}

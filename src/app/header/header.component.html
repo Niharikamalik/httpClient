@@ -1,0 +1,23 @@
+
+<mat-toolbar>
+  <span>Task Management</span>
+  <nav mat-tab-nav-bar >
+      <a matTabLink
+         [routerLink]="'/dashboard'"
+         routerLinkActive #rlaRef="routerLinkActive"
+         [active]="rlaRef.isActive">
+          Dashboard
+      </a>
+      <a matTabLink
+         [routerLink]="'/login'"
+         routerLinkActive #rlaRef="routerLinkActive"
+         [active]="rlaRef.isActive">
+          Login
+      </a>
+      <a matTabLink
+      [routerLink]="'/login'"
+      routerLinkActive #rlaRef="routerLinkActive"
+      [active]="rlaRef.isActive" > Logout</a>
+  </nav>
+</mat-toolbar>
+<router-outlet></router-outlet>
